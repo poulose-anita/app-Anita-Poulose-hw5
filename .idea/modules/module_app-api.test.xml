@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_app-api.test" default="compile.module.app-api.test">
+  <dirname property="module.app-api.test.basedir" file="${ant.file.module_app-api.test}"/>
+  
+  <property name="module.jdk.home.app-api.test" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.app-api.test" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.app-api.test" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.app-api.test" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="app-api.test.output.dir" value="undefined"/>
+  <property name="app-api.test.testoutput.dir" value="${module.app-api.test.basedir}/../../build/classes/java/test"/>
+  
+  <path id="app-api.test.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="app-api.test.module.production.classpath">
+    <path refid="${module.jdk.classpath.app-api.test}"/>
+    <pathelement location="${app-api.main.output.dir}"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.datatype:jackson-datatype-json-org:2.0.0.classpath"/>
+    <path refid="library.gradle:_org.json:json:20170516.classpath"/>
+    <path refid="library.gradle:_javax.json:javax.json-api:1.1.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.containers:jersey-container-servlet:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.media:jersey-media-json-jackson:2.23.1.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.ext:jersey-entity-filtering:2.23.1.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.containers:jersey-container-servlet-core:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.core:jersey-server:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.core:jersey-client:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.media:jersey-media-jaxb:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.core:jersey-common:2.25.classpath"/>
+    <path refid="library.gradle:_javax.ws.rs:javax.ws.rs-api:2.0.1.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.9.5.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.4.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:2.5.4.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.5.4.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.core:jackson-databind:2.9.5.classpath"/>
+    <path refid="library.gradle:_com.owlike:genson:1.4.classpath"/>
+    <path refid="library.gradle:_org.mongodb:mongodb-driver:3.4.0.classpath"/>
+    <path refid="library.gradle:_org.apache.logging.log4j:log4j-core:2.8.2.classpath"/>
+    <path refid="library.gradle:_org.apache.logging.log4j:log4j-api:2.8.2.classpath"/>
+    <path refid="library.gradle:_org.mongodb:mongodb-driver-async:3.4.2.classpath"/>
+    <path refid="library.gradle:_commons-codec:commons-codec:1.5.classpath"/>
+    <path refid="library.gradle:_javax.xml.bind:jaxb-api:2.3.0.classpath"/>
+    <path refid="library.gradle:_javax.mail:mail:1.4.7.classpath"/>
+    <path refid="library.gradle:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.core:jackson-core:2.9.5.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath"/>
+    <path refid="library.gradle:_org.mongodb:mongodb-driver-core:3.4.2.classpath"/>
+    <path refid="library.gradle:_org.mongodb:bson:3.4.2.classpath"/>
+    <path refid="library.gradle:_javax.annotation:javax.annotation-api:1.2.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.bundles.repackaged:jersey-guava:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:hk2-locator:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:hk2-api:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2.external:javax.inject:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:osgi-resource-locator:1.0.1.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:hk2-utils:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2.external:aopalliance-repackaged:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.javassist:javassist:3.20.0-ga.classpath"/>
+    <path refid="library.gradle:_javax.inject:javax.inject:1.classpath"/>
+  </path>
+  
+  <path id="app-api.test.runtime.production.module.classpath">
+    <path refid="app-api.main.runtime.production.module.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.datatype:jackson-datatype-json-org:2.0.0.classpath"/>
+    <path refid="library.gradle:_org.json:json:20170516.classpath"/>
+    <path refid="library.gradle:_javax.json:javax.json-api:1.1.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.containers:jersey-container-servlet:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.media:jersey-media-json-jackson:2.23.1.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.ext:jersey-entity-filtering:2.23.1.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.containers:jersey-container-servlet-core:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.core:jersey-server:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.core:jersey-client:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.media:jersey-media-jaxb:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.core:jersey-common:2.25.classpath"/>
+    <path refid="library.gradle:_javax.ws.rs:javax.ws.rs-api:2.0.1.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.9.5.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.4.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:2.5.4.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.5.4.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.core:jackson-databind:2.9.5.classpath"/>
+    <path refid="library.gradle:_com.owlike:genson:1.4.classpath"/>
+    <path refid="library.gradle:_org.mongodb:mongodb-driver:3.4.0.classpath"/>
+    <path refid="library.gradle:_org.apache.logging.log4j:log4j-core:2.8.2.classpath"/>
+    <path refid="library.gradle:_org.apache.logging.log4j:log4j-api:2.8.2.classpath"/>
+    <path refid="library.gradle:_org.mongodb:mongodb-driver-async:3.4.2.classpath"/>
+    <path refid="library.gradle:_commons-codec:commons-codec:1.5.classpath"/>
+    <path refid="library.gradle:_javax.xml.bind:jaxb-api:2.3.0.classpath"/>
+    <path refid="library.gradle:_javax.mail:mail:1.4.7.classpath"/>
+    <path refid="library.gradle:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.core:jackson-core:2.9.5.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath"/>
+    <path refid="library.gradle:_org.mongodb:mongodb-driver-core:3.4.2.classpath"/>
+    <path refid="library.gradle:_org.mongodb:bson:3.4.2.classpath"/>
+    <path refid="library.gradle:_javax.annotation:javax.annotation-api:1.2.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.bundles.repackaged:jersey-guava:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:hk2-locator:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:hk2-api:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2.external:javax.inject:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:osgi-resource-locator:1.0.1.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:hk2-utils:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2.external:aopalliance-repackaged:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.javassist:javassist:3.20.0-ga.classpath"/>
+    <path refid="library.gradle:_javax.inject:javax.inject:1.classpath"/>
+  </path>
+  
+  <path id="app-api.test.module.classpath">
+    <path refid="${module.jdk.classpath.app-api.test}"/>
+    <pathelement location="${app-api.main.output.dir}"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.datatype:jackson-datatype-json-org:2.0.0.classpath"/>
+    <path refid="library.gradle:_org.json:json:20170516.classpath"/>
+    <path refid="library.gradle:_javax.json:javax.json-api:1.1.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.containers:jersey-container-servlet:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.media:jersey-media-json-jackson:2.23.1.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.ext:jersey-entity-filtering:2.23.1.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.containers:jersey-container-servlet-core:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.core:jersey-server:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.core:jersey-client:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.media:jersey-media-jaxb:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.core:jersey-common:2.25.classpath"/>
+    <path refid="library.gradle:_javax.ws.rs:javax.ws.rs-api:2.0.1.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.9.5.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.4.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:2.5.4.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.5.4.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.core:jackson-databind:2.9.5.classpath"/>
+    <path refid="library.gradle:_com.owlike:genson:1.4.classpath"/>
+    <path refid="library.gradle:_org.mongodb:mongodb-driver:3.4.0.classpath"/>
+    <path refid="library.gradle:_org.apache.logging.log4j:log4j-core:2.8.2.classpath"/>
+    <path refid="library.gradle:_org.apache.logging.log4j:log4j-api:2.8.2.classpath"/>
+    <path refid="library.gradle:_org.mongodb:mongodb-driver-async:3.4.2.classpath"/>
+    <path refid="library.gradle:_commons-codec:commons-codec:1.5.classpath"/>
+    <path refid="library.gradle:_javax.xml.bind:jaxb-api:2.3.0.classpath"/>
+    <path refid="library.gradle:_javax.mail:mail:1.4.7.classpath"/>
+    <path refid="library.gradle:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.core:jackson-core:2.9.5.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath"/>
+    <path refid="library.gradle:_org.mongodb:mongodb-driver-core:3.4.2.classpath"/>
+    <path refid="library.gradle:_org.mongodb:bson:3.4.2.classpath"/>
+    <path refid="library.gradle:_javax.annotation:javax.annotation-api:1.2.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.bundles.repackaged:jersey-guava:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:hk2-locator:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:hk2-api:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2.external:javax.inject:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:osgi-resource-locator:1.0.1.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:hk2-utils:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2.external:aopalliance-repackaged:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.javassist:javassist:3.20.0-ga.classpath"/>
+    <path refid="library.gradle:_javax.inject:javax.inject:1.classpath"/>
+  </path>
+  
+  <path id="app-api.test.runtime.module.classpath">
+    <pathelement location="${app-api.test.testoutput.dir}"/>
+    <path refid="app-api.main.runtime.module.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.datatype:jackson-datatype-json-org:2.0.0.classpath"/>
+    <path refid="library.gradle:_org.json:json:20170516.classpath"/>
+    <path refid="library.gradle:_javax.json:javax.json-api:1.1.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.containers:jersey-container-servlet:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.media:jersey-media-json-jackson:2.23.1.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.ext:jersey-entity-filtering:2.23.1.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.containers:jersey-container-servlet-core:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.core:jersey-server:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.core:jersey-client:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.media:jersey-media-jaxb:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.core:jersey-common:2.25.classpath"/>
+    <path refid="library.gradle:_javax.ws.rs:javax.ws.rs-api:2.0.1.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.9.5.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.4.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:2.5.4.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.5.4.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.core:jackson-databind:2.9.5.classpath"/>
+    <path refid="library.gradle:_com.owlike:genson:1.4.classpath"/>
+    <path refid="library.gradle:_org.mongodb:mongodb-driver:3.4.0.classpath"/>
+    <path refid="library.gradle:_org.apache.logging.log4j:log4j-core:2.8.2.classpath"/>
+    <path refid="library.gradle:_org.apache.logging.log4j:log4j-api:2.8.2.classpath"/>
+    <path refid="library.gradle:_org.mongodb:mongodb-driver-async:3.4.2.classpath"/>
+    <path refid="library.gradle:_commons-codec:commons-codec:1.5.classpath"/>
+    <path refid="library.gradle:_javax.xml.bind:jaxb-api:2.3.0.classpath"/>
+    <path refid="library.gradle:_javax.mail:mail:1.4.7.classpath"/>
+    <path refid="library.gradle:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.core:jackson-core:2.9.5.classpath"/>
+    <path refid="library.gradle:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath"/>
+    <path refid="library.gradle:_org.mongodb:mongodb-driver-core:3.4.2.classpath"/>
+    <path refid="library.gradle:_org.mongodb:bson:3.4.2.classpath"/>
+    <path refid="library.gradle:_javax.annotation:javax.annotation-api:1.2.classpath"/>
+    <path refid="library.gradle:_org.glassfish.jersey.bundles.repackaged:jersey-guava:2.25.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:hk2-locator:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:hk2-api:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2.external:javax.inject:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:osgi-resource-locator:1.0.1.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2:hk2-utils:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.glassfish.hk2.external:aopalliance-repackaged:2.5.0-b30.classpath"/>
+    <path refid="library.gradle:_org.javassist:javassist:3.20.0-ga.classpath"/>
+    <path refid="library.gradle:_javax.inject:javax.inject:1.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.app-api.test">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.app-api.test">
+    <patternset refid="excluded.from.module.app-api.test"/>
+  </patternset>
+  
+  
+  <target name="compile.module.app-api.test" depends="compile.module.app-api.test.production,compile.module.app-api.test.tests" description="Compile module app-api.test"/>
+  
+  <target name="compile.module.app-api.test.production" depends="register.custom.compilers,compile.module.app-api.main" description="Compile module app-api.test; production classes"/>
+  
+  <target name="compile.module.app-api.test.tests" depends="register.custom.compilers,compile.module.app-api.test.production" description="compile module app-api.test; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.app-api.test" description="cleanup module">
+    <delete dir="${app-api.test.output.dir}"/>
+    <delete dir="${app-api.test.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_app-api" default="compile.module.app-api">
+  <dirname property="module.app-api.basedir" file="${ant.file.module_app-api}"/>
+  
+  <property name="module.jdk.home.app-api" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.app-api" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.app-api" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.app-api" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="app-api.output.dir" value="undefined"/>
+  <property name="app-api.testoutput.dir" value="undefined"/>
+  
+  <path id="app-api.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="app-api.module.production.classpath">
+    <path refid="${module.jdk.classpath.app-api}"/>
+  </path>
+  
+  <path id="app-api.runtime.production.module.classpath"/>
+  
+  <path id="app-api.module.classpath">
+    <path refid="${module.jdk.classpath.app-api}"/>
+  </path>
+  
+  <path id="app-api.runtime.module.classpath"/>
+  
+  
+  <patternset id="excluded.from.module.app-api">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.app-api">
+    <patternset refid="excluded.from.module.app-api"/>
+  </patternset>
+  
+  
+  <target name="compile.module.app-api" depends="compile.module.app-api.production,compile.module.app-api.tests" description="Compile module app-api"/>
+  
+  <target name="compile.module.app-api.production" depends="register.custom.compilers" description="Compile module app-api; production classes"/>
+  
+  <target name="compile.module.app-api.tests" depends="register.custom.compilers,compile.module.app-api.production" description="compile module app-api; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.app-api" description="cleanup module">
+    <delete dir="${app-api.output.dir}"/>
+    <delete dir="${app-api.testoutput.dir}"/>
+  </target>
+</project>
